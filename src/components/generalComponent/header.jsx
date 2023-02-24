@@ -15,17 +15,8 @@ const Header = () => {
                     </a>
                 </div>
                 <div className='float-child'>
-                    <button className='header-login'><img src='images/placeholder_image.png' className='userpic-button' onClick={userPicClick}/></button>
-                    {/* <RaisedButton
-                        label="Submit"
-                        buttonStyle={{ borderRadius: 25 }}
-                        style={{ borderRadius: 25 }}
-                        labelColor={'#FFFFFF'}
-                        backgroundColor={"#0066e8"}
-    /> */}          
-
-                </div>
-                
+                    <button className='header-login'><img src='images/placeholder_image.png' className='userpic-button' alt='userpic' onClick={userPicClick}/></button>      
+                </div>     
             </nav>
         </div>
     )
