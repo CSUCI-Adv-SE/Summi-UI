@@ -2,11 +2,29 @@
     color: rgb(23, 23, 169);
 }
 .header-logo {
-    height: 100px;
+    height: 80px;
     width: 100px;
 }
 
 .header li {
     padding: 0px 16px;
 
+}
+
+
+
+.header {
+    /* border: 3px solid #fff; */
+    /* padding: 20px; */
+}
+
+.float-child {
+    width: auto;
+    float: left;
+    padding: 0px;
+    
+}  
+
+.custom-navbar {
+    background-color: #0B3668;
 }
