@@ -1,0 +1,12 @@
+.navbar .navbar-expand-lgnavbar-light {
+    color: rgb(23, 23, 169);
+}
+.header-logo {
+    height: 100px;
+    width: 100px;
+}
+
+.header li {
+    padding: 0px 16px;
+
+}
