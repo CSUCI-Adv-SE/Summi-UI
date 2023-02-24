@@ -1,6 +1,10 @@
 import React from 'react';
 import './headerModule.css'
 
+function userPicClick() {
+    console.log('Clicked');
+}
+
 const Header = () => {
     return(
         <div className='general header'>
@@ -11,14 +15,15 @@ const Header = () => {
                     </a>
                 </div>
                 <div className='float-child'>
-                    {/* <button className='header-login' color="inherit">Login</button> */}
+                    <button className='header-login'><img src='images/placeholder_image.png' className='userpic-button' onClick={userPicClick}/></button>
                     {/* <RaisedButton
                         label="Submit"
                         buttonStyle={{ borderRadius: 25 }}
                         style={{ borderRadius: 25 }}
                         labelColor={'#FFFFFF'}
                         backgroundColor={"#0066e8"}
-    /> */}
+    /> */}          
+
                 </div>
                 
             </nav>
