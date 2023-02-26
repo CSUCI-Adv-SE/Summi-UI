@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './headerModule.css'
+import LoginDropDown from './loginDropDown';
 
-function userPicClick() {
-    console.log('Clicked');
-}
 
 const Header = () => {
+    const [openDropDown, setOpenDropDown] = useState(false);
     return(
         <div className='general header'>
             <nav className='navbar navbar-expand-lgnavbar-light custom-navbar'>
@@ -15,8 +14,11 @@ const Header = () => {
                     </a>
                 </div>
                 <div className='float-child'>
-                    <button className='header-login'><img src='images/placeholder_image.png' className='userpic-button' alt='userpic' onClick={userPicClick}/></button>      
-                </div>     
+                    <button className='header-login'><img src='images/placeholder_image.png' className='userpic-button' alt='userpic' onClick={()=>setOpenDropDown((prev)=>!prev)}/></button>      
+                </div>  
+                {
+                    openDropDown && <LoginDropDown/>
+                }   
             </nav>
         </div>
     )
