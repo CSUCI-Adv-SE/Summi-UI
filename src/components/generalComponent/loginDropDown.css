@@ -1,10 +1,10 @@
 .loginDropDown {
     position: absolute;
     top: 5.5rem;
-    right: 1.0rem;
+    right: 0.7rem;
     width: 80px;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: white;
     border: 1px solid gray;
 }
@@ -13,7 +13,7 @@
     content: '';
     position: absolute;
     top: -0.7rem;
-    right: 0.7rem;
+    right: 1rem;
     width: 20px;
     height: 20px;
     transform: rotate(45deg);
@@ -22,7 +22,7 @@
     border-top: 1px solid gray;
 }
 
-.gap-4 {
+.loginDropDownItem {
     list-style-type: none;
     padding: 4px;
     margin: 0px;
