@@ -1,29 +1,33 @@
-import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
-import './resultPage.css';
+// import { TextareaAutosize } from '@mui/material';
+import React, { Component } from 'react';
+import './resultpage.css';
 
-class ConversionResult extends React.Component {
+
+class ConversionResult extends Component {
     constructor(props) {
+        console.log(props)
         super(props);
         this.state = {
-            text: 'recognise text'
-        };
+            text: props.recognisedText,
+            image_url: props.imageURL,
+
+            text: "some text from backend",
+            image_url: "/media/fabc7226-37fe-43c0-882c-693a779540ad/sdf _html onload=alert('hi')_.jpg",
+        }
     }
-
-
-
-    render() {
+    
+    render() { 
         return (
-            <div className="container">
-                <div className="header">
+            <div className={"row"}>
+                <div className={"col"}>
+                    <img src={"http://127.0.0.1:8000" + this.state.image_url} width="500" height="500"></img>
                 </div>
-                <div className="content">
-                    {/*<pre>{this.state.text}</pre>*/}
-                    <textarea>{this.state.text}</textarea>
+                <div className={"col"}>
+                    <textarea></textarea>
                 </div>
             </div>
         );
     }
 }
-
-ReactDOM.render(<ConversionResult />, document.getElementById('root'));
+ 
+export default ConversionResult;

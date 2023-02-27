@@ -1,4 +1,4 @@
-import React, { useRef} from 'react';
+import React, { useRef } from 'react';
 import axios from 'axios';
 import useFileUpload from 'react-use-file-upload';
 import style from './uploadFile.module.css';
@@ -6,11 +6,10 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import 'react-notifications/lib/notifications.css';
 
 
-function UpLoad(){
+const UpLoad = (props) => {
   const {
     files,
     fileNames,
- 
     handleDragDropEvent,
     clearAllFiles,
     createFormData,
@@ -33,9 +32,19 @@ function UpLoad(){
       axios.post('http://127.0.0.1:8000/upload-file/', formData, {
         'content-type': 'multipart/form-data',
       }).then((response) => {
+        console.log(props)
         console.log(response.data.status);
         if (response.data.status !== 200) {
           NotificationManager.error('Error message', response.data.message, 5000)    
+        }
+
+        if (response.data.status === 200) {
+          let tmp = {}
+          tmp["image_url"] = response.data.image_url
+          tmp["recognised_text"] = "some text from backend"
+          tmp["clicked_on_navigate"] = true;
+          props.parentCallback(tmp);
+          // console.log(props.clicked_on_navigate)
         }
       })
       // NotificationManager.success('Files uploaded successfully!', 'Success', 3000);
