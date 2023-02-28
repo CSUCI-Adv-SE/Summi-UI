@@ -1,22 +1,19 @@
 import './App.css';
-import UpLoad from './components/uploadFile/upload';
+import Header from './components/generalComponent/header';
+import Sidebar from './components/generalComponent/sidebar';
 import 'react-notifications/lib/notifications.css';
 
 import UploadPageComponent from './components/uploadFile/uploadpage';
 
-
-
 function App() {
   return (
-    <> 
-    
-    
-    <UploadPageComponent />
-  
-
-  
-  </>
-  )
+    <div className="App">
+      <Header/>
+      <Sidebar/>
+      
+      <UploadPageComponent />
+    </div>
+  );
 }
 
 export default App;
