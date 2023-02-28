@@ -7,11 +7,13 @@ import Sidebar from './components/generalComponent/sidebar';
 function App() {
   return (
     <div className="App">
+      
       <Header />
+      <UpLoad />
       <Sidebar />
 
 
-      <UpLoad />
+      
 
 
 

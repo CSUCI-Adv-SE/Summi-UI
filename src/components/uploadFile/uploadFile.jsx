@@ -46,10 +46,7 @@ function UpLoad() {
 
     formData.append("uploaded_file", files[0])
     try {
-      // eslint-disable-next-line
-      // http://18.224.179.137:8000/
-      //eslint-disable-next-line
-      axios.post("http://127.0.0.1:8000" + "/upload-file/", formData, {
+      axios.post("http://18.224.179.137:8000" + "/upload-file/", formData, {
         'content-type': 'multipart/form-data',
       }).then((response) => {
         console.log(response.data.status);
