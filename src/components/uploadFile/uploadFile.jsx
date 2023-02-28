@@ -35,7 +35,13 @@ function UpLoad() {
     e.preventDefault();
     //*formData object to constructure a set of key/value pairs: form fileds and their 
     //this object is easily sent using the axios.post()method */}
-
+    if (!files.length) {
+      NotificationManager.error('Please select a file to upload', '', 5000);
+      return;
+    }
+    if (files.length > 1) {
+      NotificationManager.error('please select one file each time for submit', '', 5000);
+    }
     const formData = createFormData();
 
     formData.append("uploaded_file", files[0])
@@ -48,7 +54,7 @@ function UpLoad() {
       }).then((response) => {
         console.log(response.data.status);
         if (response.data.status !== 200) {
-          NotificationManager.error('Error message', response.data.message, 5000)
+          NotificationManager.error('Error', 'someting wrong', 5000)
         }
       });
     }
@@ -79,9 +85,10 @@ function UpLoad() {
         onDragEnter={handleDragDropEvent}
         onDragOver={handleDragDropEvent}
         onDrop={(e) => {
-          e.preventDefault();
+
           handleDragDropEvent(e);
-          setFiles([e.dataTransfer.files[0]]);
+
+          setFiles(e, 'a');
         }}>
         <img src={process.env.PUBLIC_URL + "/upload_icon.png"} alt="cloud_upload" />
         <p>Drag and drop files here</p>
