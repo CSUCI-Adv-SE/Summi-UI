@@ -1,11 +1,11 @@
-import './App.css';
-import 'react-notifications/lib/notifications.css';
+import "./App.css";
+import "react-notifications/lib/notifications.css";
 
-import HomePage from './components/homepageComponent/homepage';
+import HomePage from "./components/homepageComponent/homepage";
 
 function App() {
   return (
-    <div className="App" style={{height:100}}>
+    <div className="App" style={{ height: 100 }}>
       <HomePage />
     </div>
   );
