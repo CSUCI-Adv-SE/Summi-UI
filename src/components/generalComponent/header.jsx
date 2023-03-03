@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import './headerModule.css'
 import LoginDropDown from './loginDropDown';
 
@@ -6,7 +6,7 @@ import LoginDropDown from './loginDropDown';
 const Header = () => {
     const [openDropDown, setOpenDropDown] = useState(false);
 
-    const userpicButton = (event: ChangeEvent<HTMLInputElement>) => {
+    const userpicButton = (event) => {
         setOpenDropDown((prev)=>!prev);
     }
     return(

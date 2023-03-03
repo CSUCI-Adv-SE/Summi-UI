@@ -12,11 +12,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  width: 400px;
+  height: 75%;
+  width: 95%;
+  border-radius: 20px;
+  margin: 30px;
   border: 2px dashed #ccc;
   margin-bottom: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   background-color: white;
 }
 .dropzone img{
@@ -42,10 +44,9 @@
 
 .list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
+  /* flex-direction: column;
+  align-items: center; */
+  justify-content: right;
 }
 
 .list ul {
@@ -56,7 +57,7 @@
 
 .list li {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   width: 100%;
   padding: 10px;
@@ -68,10 +69,11 @@
 .list li span:first-child {
   margin-right: 10px;
 }
-.clearn_all {
+.clear_all, .submit {
   background-color: #336699;
   color: white;
   border: none;
+  margin-left: 20px;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
@@ -88,13 +90,13 @@
 
 .vertical_btn button {
 
-  justify-content: space-between;
-  height: '100vh';
-  display: 'flex';
+  justify-content: center;
+  /* height: 100vh; */
+  display: flex;
   /*flex-direction: 'column';*/
-  align-items:'center';
-  background-color: #336699;
+  align-items:center;
   color: white;
+  background: #336699;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -104,6 +106,28 @@
   
 
 }
+
+
+
+.vertical_btn  {
+
+  justify-content: right;
+  /* height: 100vh; */
+  display: flex;
+  /*flex-direction: 'column';*/
+  align-items:center;
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  
+
+}
+
+
 
 /*
 .clearnall button {

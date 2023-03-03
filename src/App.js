@@ -1,17 +1,12 @@
 import './App.css';
-import Header from './components/generalComponent/header';
-import Sidebar from './components/generalComponent/sidebar';
 import 'react-notifications/lib/notifications.css';
 
-import UploadPageComponent from './components/uploadFile/uploadpage';
+import HomePage from './components/homepageComponent/homepage';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Sidebar/>
-      
-      <UploadPageComponent />
+    <div className="App" style={{height:100}}>
+      <HomePage />
     </div>
   );
 }

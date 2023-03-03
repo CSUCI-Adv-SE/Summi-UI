@@ -1,9 +1,14 @@
-import React, { useRef } from 'react';
-import axios from 'axios';
-import useFileUpload from 'react-use-file-upload';
-import style from './uploadFile.module.css';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import React, { useRef } from "react";
+import axios from "axios";
+import useFileUpload from "react-use-file-upload";
+import style from "./uploadFile.module.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { config } from "../../constants";
 
 
 const UpLoad = (props) => {
@@ -14,115 +19,146 @@ const UpLoad = (props) => {
     clearAllFiles,
     createFormData,
     setFiles,
-    removeFile,
   } = useFileUpload();
 
   const inputRef = useRef();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(files)
- //*formData object to constructure a set of key/value pairs: form fileds and their 
-  //this object is easily sent using the axios.post()method */}
+
     const formData = createFormData();
 
-    formData.append("uploaded_file", files[0])
-    console.log(files)
-     try{
-      axios.post('http://127.0.0.1:8000/upload-file/', formData, {
-        'content-type': 'multipart/form-data',
-      }).then((response) => {
-        console.log(props)
-        console.log(response.data.status);
+    formData.append("uploaded_file", files[0]);
+    axios
+      .post(config.url.API_URL + "/upload-file/", formData, {
+        "content-type": "multipart/form-data",
+      })
+      .then((response) => {
         if (response.data.status !== 200) {
-          NotificationManager.error('Error message', response.data.message, 5000)    
-        }
-
-        if (response.data.status === 200) {
-          let tmp = {}
-          tmp["image_url"] = response.data.image_url
-          tmp["recognised_text"] = "some text from backend"
-          tmp["clicked_on_navigate"] = true;
-          props.parentCallback(tmp);
-          // console.log(props.clicked_on_navigate)
+          NotificationManager.error(
+            "Error message",
+            response.data.message,
+            5000
+          );
+        } else if (response.data.status === 200) {
+          let resp = {};
+          resp["image_url"] = response.data.image_url;
+          resp["recognised_text"] = "some text from backend";
+          resp["clicked_on_navigate"] = true;
+          props.parentCallback(resp);
         }
       })
-      // NotificationManager.success('Files uploaded successfully!', 'Success', 3000);
-      // NotificationManager.error('Error message', 'Click me!', 5000)
-    }
-      catch(error){
-        if (error.response && error.response.status > 200) {
-             NotificationManager.error('An error occurred while fetching data', 'Error', 3000);
-             
-            }
-          }
-      
-    };
-
+      .catch((error) => {
+        console.log(error)
+        NotificationManager.error(error.message, "Error", 5000);
+      });
+  };
 
   return (
-    
-    <div className={style.body}>
-      <NotificationContainer />
-       
-       {/* Provide a drop zone and an alternative button inside it to upload files. */}
-       <div
-        className={style.dropzone}
-        onDragEnter={handleDragDropEvent}
-        onDragOver={handleDragDropEvent}
-        onDrop={(e) => {
-          handleDragDropEvent(e);
-          setFiles(e, 'a');
-        }}
-      > 
-        <img src={process.env.PUBLIC_URL + "/upload_icon.png"} alt="cloud_upload"/>
-        <p>Drag and drop files here</p>
+    <>
+      <div className={"col"}>
+        <NotificationContainer />
 
-        <button onClick={() => inputRef.current.click()}>Or select files to upload</button>
+        {/* Provide a drop zone and an alternative button inside it to upload files. */}
+        <div
+          className={style.dropzone}
+          onDragEnter={handleDragDropEvent}
+          onDragOver={handleDragDropEvent}
+          onDrop={(e) => {
+            handleDragDropEvent(e);
 
-        {/* Hide the crappy looking default HTML input */}
-        <input
-          ref={inputRef}
-          type="file"
-          accept='image/*'
-          style={{ display: 'none' }}
-          onChange={(e) => {
-            setFiles(e, 'a');
-            inputRef.current.value = null;
+            if (e.dataTransfer.files) {
+              if (e.dataTransfer.files.length === 1) {
+                setFiles(e);
+              } else {
+                NotificationManager.error(
+                  "Please Drag and drop one file",
+                  "Error",
+                  5000
+                );
+              }
+            }
           }}
-        />
-      </div>
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/upload_icon.png"}
+            alt="cloud_upload"
+          />
 
-    
-  
-          <div className={style.list} >
-          {/* Display the files to be uploaded */}
+          
+          <p>Drag and drop files here</p>
+
+          <button onClick={() => inputRef.current.click()}>
+            Or select files to upload
+          </button>
+
+          <input
+            ref={inputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              setFiles(e);
+              inputRef.current.value = null;
+            }}
+          />
+        </div>
+
+        {/* <div className={style.list} >
    
           <ul>
             {fileNames.map((name) => (
+              <div className={style.vertical_btn}>
               <li key={name}>
                 <span>{name} loaded</span>
 
-                <span onClick={() => removeFile(name)}>
-                  <i className="fa fa-times" />
-                </span>
+                <button  className='clearall' onClick={() => clearAllFiles()}>Clear</button>
               </li>
+              </div>
             ))}
           </ul>
-           </div>
+           </div> */}
 
+        <div className={style.list}>
+          {files.length > 0 && (
+            <>
+              <ul>
+                {fileNames.map((name) => (
+                  <div>
+                    <li key={name}>
+                      <span>{name} loaded</span>
 
-          <div className={style.vertical_btn} >         
-                {
-              files.length > 0 && (
-                      <button  className='cleanall' onClick={() => clearAllFiles()}>Clear All</button>
-                )}
-            <button className='submit' onClick={handleSubmit}>Submit</button>
-          </div>
-</div>
-      
-);
-}
+                      <div style={{ display: "flex" }}>
+                        <button
+                          className={style.clear_all}
+                          onClick={() => clearAllFiles()}
+                        >
+                          Clear
+                        </button>
+                        <button className={style.submit} onClick={handleSubmit}>
+                          Submit
+                        </button>
+                      </div>
+                    </li>
+                  </div>
+                ))}
+              </ul>
+            </>
+          )}
 
+          {files.length === 0 && (
+            <button
+              className="submit btn btn-light disabled"
+              disabled
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default UpLoad;

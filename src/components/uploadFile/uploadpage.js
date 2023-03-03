@@ -8,7 +8,7 @@ class UploadPageComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicked_on_navigate: true,
+            clicked_on_navigate: false,
             recognised_text: "",
             image_url: "",
         }

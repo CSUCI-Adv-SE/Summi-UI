@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
-import UpLoad from '../uploadFile/upload';
 
-function Homepage(){
-    return (
-        <>
-        <h1>Welcome to the Homepage!</h1>
-        <Upload />
-        </>
-    )
+import Header from '../generalComponent/header';
+import Sidebar from '../generalComponent/sidebar';
+import UploadPageComponent from '../uploadFile/uploadpage';
+
+
+class HomePage extends Component {
+    state = {  } 
+    render() { 
+        return (
+            <>
+            
+            <Header />
+
+            <div className='container-fluid' style={{background: "#E4E8FF"}}>
+
+            <div className="row">
+
+            <Sidebar />
+            
+            <UploadPageComponent />
+
+            </div>
+            </div>
+            </>
+        );
+    }
 }
-export default Homepage; 
+ 
+export default HomePage;

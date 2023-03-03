@@ -11,4 +11,5 @@ ul li a:hover {
 .bg-custom {
     background-color: #0B3668;
     opacity: 87%;
+    min-height: 87vh;
 }
