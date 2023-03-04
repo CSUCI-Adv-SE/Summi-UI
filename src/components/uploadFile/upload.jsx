@@ -41,17 +41,34 @@ const UpLoad = (props) => {
             5000
           );
         } else if (response.data.status === 200) {
-          let resp = {};
-          resp["image_url"] = response.data.image_url;
-          resp["recognised_text"] = "some text from backend";
-          resp["clicked_on_navigate"] = true;
-          props.parentCallback(resp);
+          const summaryFormData = createFormData();
+          summaryFormData.append("image_uuid", response.data.image_url);
+          axios
+            .post(config.url.API_URL + "/summarise-text/", summaryFormData, {
+              "content-type": "multipart/form-data",
+            })
+            .then((response) => {
+              if (response.data.status !== 200) {
+
+                NotificationManager.error(
+                  "Error message",
+                  response.data.message,
+                  5000
+                );
+              } else if (response.data.status === 200) {
+                let resp = {};
+                resp["image_url"] = response.data.image_url;
+                resp["recognised_text"] = response.data.message;
+                resp["clicked_on_navigate"] = true;
+                props.parentCallback(resp);
+              }
+            })
+            .catch((error) => {
+              console.log(error)
+              NotificationManager.error(error.message, "Error", 5000);
+            });
         }
       })
-      .catch((error) => {
-        console.log(error)
-        NotificationManager.error(error.message, "Error", 5000);
-      });
   };
 
   return (
@@ -85,7 +102,7 @@ const UpLoad = (props) => {
             alt="cloud_upload"
           />
 
-          
+
           <p>Drag and drop files here</p>
 
           <button onClick={() => inputRef.current.click()}>
