@@ -1,10 +1,29 @@
-.row {
-    display: flex; /* equal height of the children */
-  }
+.text-header {
+  /* font-size: 16px; */
+  margin: 30px;
+}
 
-.col {
-flex: 1; /* additionally, equal width */
+img {
+  width: 95%;
+  border-radius: .375rem;
+}
 
-padding: 1em;
-border: solid;
+/* Let's get this party started */
+div *::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: lightslategray; 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
