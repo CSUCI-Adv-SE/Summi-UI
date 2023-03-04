@@ -10,6 +10,7 @@ import "react-notifications/lib/notifications.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { config } from "../../constants";
 
+
 const UpLoad = (props) => {
   const {
     files,
@@ -41,36 +42,33 @@ const UpLoad = (props) => {
           );
         } else if (response.data.status === 200) {
           const summaryFormData = createFormData();
-          summaryFormData.append("image_uuid", response.data.image_url);
+          summaryFormData.append("image_uuid", response.data.image_id);
           axios
             .post(config.url.API_URL + "/summarise-text/", summaryFormData, {
               "content-type": "multipart/form-data",
             })
-            .then((response) => {
-              if (response.data.status !== 200) {
+            .then((summary_response) => {
+              if (summary_response.data.status !== 200) {
+
                 NotificationManager.error(
                   "Error message",
-                  response.data.message,
+                  summary_response.data.message,
                   5000
                 );
-              } else if (response.data.status === 200) {
+              } else if (summary_response.data.status === 200) {
                 let resp = {};
                 resp["image_url"] = response.data.image_url;
-                resp["recognised_text"] = response.data.message;
+                resp["recognised_text"] = summary_response.data.message;
                 resp["clicked_on_navigate"] = true;
                 props.parentCallback(resp);
               }
             })
             .catch((error) => {
-              console.log(error);
+              console.log(error)
               NotificationManager.error(error.message, "Error", 5000);
             });
         }
       })
-      .catch((error) => {
-        console.log(error);
-        NotificationManager.error(error.message, "Error", 5000);
-      });
   };
 
   return (
@@ -103,6 +101,7 @@ const UpLoad = (props) => {
             src={process.env.PUBLIC_URL + "/upload_icon.png"}
             alt="cloud_upload"
           />
+
 
           <p>Drag and drop files here</p>
 
