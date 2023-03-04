@@ -10,7 +10,6 @@ import "react-notifications/lib/notifications.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { config } from "../../constants";
 
-
 const UpLoad = (props) => {
   const {
     files,
@@ -49,7 +48,6 @@ const UpLoad = (props) => {
             })
             .then((response) => {
               if (response.data.status !== 200) {
-
                 NotificationManager.error(
                   "Error message",
                   response.data.message,
@@ -64,11 +62,15 @@ const UpLoad = (props) => {
               }
             })
             .catch((error) => {
-              console.log(error)
+              console.log(error);
               NotificationManager.error(error.message, "Error", 5000);
             });
         }
       })
+      .catch((error) => {
+        console.log(error);
+        NotificationManager.error(error.message, "Error", 5000);
+      });
   };
 
   return (
@@ -101,7 +103,6 @@ const UpLoad = (props) => {
             src={process.env.PUBLIC_URL + "/upload_icon.png"}
             alt="cloud_upload"
           />
-
 
           <p>Drag and drop files here</p>
 
