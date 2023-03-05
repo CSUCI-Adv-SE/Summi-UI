@@ -6,7 +6,6 @@ import { config } from "../../constants.js";
 
 class ConversionResult extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       text: props.recognisedText,

@@ -62,10 +62,12 @@ const UpLoad = (props) => {
               }
             })
             .catch((error) => {
-              console.log(error);
               NotificationManager.error(error.message, "Error", 5000);
             });
         }
+      })
+      .catch((error) => {
+        NotificationManager.error(error.message, "Error", 5000);
       });
   };
 
@@ -125,7 +127,9 @@ const UpLoad = (props) => {
                 {fileNames.map((name) => (
                   <div key={name}>
                     <li key={name}>
-                      <span className={style.files_names_list}>{name} loaded</span>
+                      <span className={style.files_names_list}>
+                        {name} loaded
+                      </span>
 
                       <div style={{ display: "flex" }}>
                         <button
