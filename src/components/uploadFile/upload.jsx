@@ -71,7 +71,7 @@ const UpLoad = (props) => {
 
   return (
     <>
-      <div className={"col"}>
+      <div className="col">
         <NotificationContainer />
 
         {/* Provide a drop zone and an alternative button inside it to upload files. */}
@@ -123,7 +123,7 @@ const UpLoad = (props) => {
             <>
               <ul>
                 {fileNames.map((name) => (
-                  <div>
+                  <div key={name}>
                     <li key={name}>
                       <span>{name} loaded</span>
 
