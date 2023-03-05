@@ -10,7 +10,6 @@ import "react-notifications/lib/notifications.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { config } from "../../constants";
 
-
 const UpLoad = (props) => {
   const {
     files,
@@ -49,7 +48,6 @@ const UpLoad = (props) => {
             })
             .then((summary_response) => {
               if (summary_response.data.status !== 200) {
-
                 NotificationManager.error(
                   "Error message",
                   summary_response.data.message,
@@ -64,11 +62,11 @@ const UpLoad = (props) => {
               }
             })
             .catch((error) => {
-              console.log(error)
+              console.log(error);
               NotificationManager.error(error.message, "Error", 5000);
             });
         }
-      })
+      });
   };
 
   return (
@@ -102,7 +100,6 @@ const UpLoad = (props) => {
             alt="cloud_upload"
           />
 
-
           <p>Drag and drop files here</p>
 
           <button onClick={() => inputRef.current.click()}>
@@ -120,21 +117,6 @@ const UpLoad = (props) => {
             }}
           />
         </div>
-
-        {/* <div className={style.list} >
-   
-          <ul>
-            {fileNames.map((name) => (
-              <div className={style.vertical_btn}>
-              <li key={name}>
-                <span>{name} loaded</span>
-
-                <button  className='clearall' onClick={() => clearAllFiles()}>Clear</button>
-              </li>
-              </div>
-            ))}
-          </ul>
-           </div> */}
 
         <div className={style.list}>
           {files.length > 0 && (

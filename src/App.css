@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background: #e4e8ff;
-  height: 100vh;
+  height: 93vh;
 }
 
 .App-logo {
@@ -36,5 +36,26 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .desktop {
+    display: block;
+  }
+  .mobile,
+  .tablet {
+    display: none;
+  }
+}
+
+/*Mobile Query*/
+@media only screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+  .desktop,
+  .tablet {
+    display: none;
   }
 }

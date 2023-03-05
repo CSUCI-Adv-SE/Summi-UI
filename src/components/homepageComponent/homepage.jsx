@@ -1,29 +1,28 @@
-import Header from '../generalComponent/header';
-import Sidebar from '../generalComponent/sidebar';
-import UploadPageComponent from '../uploadFile/uploadpage';
-import {Component} from 'react'
+import Header from "../generalComponent/header";
+import Sidebar from "../generalComponent/sidebar";
+import UploadPageComponent from "../uploadFile/uploadpage";
+import { Component } from "react";
 
 class HomePage extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <>
+  state = {};
+  render() {
+    return (
+      <>
+        <Header />
 
-            <Header />
-
-            <div className='container-fluid' style={{background: "#E4E8FF"}}>
-
-            <div className="row">
-
+        <div
+          className="container-fluid"
+          style={{ background: "#E4E8FF", height: "100%" }}
+        >
+          <div className="row" style={{ height: "100%" }}>
             <Sidebar />
 
             <UploadPageComponent />
-
-            </div>
-            </div>
-            </>
-        );
-    }
-} 
+          </div>
+        </div>
+      </>
+    );
+  }
+}
 
 export default HomePage;

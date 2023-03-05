@@ -5,7 +5,7 @@ import HomePage from "./components/homepageComponent/homepage";
 
 function App() {
   return (
-    <div className="App" style={{ height: 100 }}>
+    <div className="App">
       <HomePage />
     </div>
   );
