@@ -49,6 +49,7 @@
   /* flex-direction: column;
   align-items: center; */
   justify-content: right;
+  padding-right: 2%;
 }
 
 .list ul {
@@ -63,7 +64,6 @@
   align-items: center;
   width: 100%;
   padding: 10px;
-
 
   margin-bottom: 5px;
 }
@@ -84,14 +84,12 @@
   cursor: pointer;
 }
 
-
 .btn div {
   display: flex;
   justify-content: space-between;
 }
 
 .vertical_btn button {
-
   justify-content: center;
   /* height: 100vh; */
   display: flex;
@@ -105,31 +103,33 @@
   font-size: 16px;
   cursor: pointer;
   margin-left: 10px;
-
 }
 
+.vertical_btn {
+  justify-content: right;
+  /* height: 100vh; */
+  display: flex;
+  /*flex-direction: 'column';*/
+  align-items: center;
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
 
-  .vertical_btn {
-
-    justify-content: right;
-    /* height: 100vh; */
-    display: flex;
-    /*flex-direction: 'column';*/
-    align-items: center;
-    /* color: white; */
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
-
-
+@media (max-width: 768px) {
+  .dropzone {
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
   }
+}
 
-
-
-  /*
+/*
 .clearnall button {
  
   background-color: #cccccc;
@@ -141,7 +141,7 @@
   cursor: pointer;
 }
 */
-  /*
+/*
  height: '100vh';
   display: 'flex';
   flex-direction: 'column';
