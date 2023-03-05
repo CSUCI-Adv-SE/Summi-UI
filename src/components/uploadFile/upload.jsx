@@ -40,6 +40,11 @@ const UpLoad = (props) => {
             5000
           );
         } else if (response.data.status === 200) {
+          NotificationManager.sucess(
+            "success message",
+            "File is uploaded successfully",
+            5000
+          );
           const summaryFormData = createFormData();
           summaryFormData.append("image_uuid", response.data.image_id);
           axios
@@ -54,6 +59,11 @@ const UpLoad = (props) => {
                   5000
                 );
               } else if (summary_response.data.status === 200) {
+                NotificationManager.sucess(
+                  "success message",
+                  "File is uploaded successfully",
+                  5000
+                );
                 let resp = {};
                 resp["image_url"] = response.data.image_url;
                 resp["recognised_text"] = summary_response.data.message;
