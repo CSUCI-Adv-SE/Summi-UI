@@ -125,7 +125,7 @@ const UpLoad = (props) => {
                 {fileNames.map((name) => (
                   <div key={name}>
                     <li key={name}>
-                      <span>{name} loaded</span>
+                      <span className={style.files_names_list}>{name} loaded</span>
 
                       <div style={{ display: "flex" }}>
                         <button

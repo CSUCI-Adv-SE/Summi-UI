@@ -120,6 +120,15 @@
   margin: 10px;
 }
 
+.files_names_list {
+  display: inline-block;
+  max-width: 17ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
 @media (max-width: 768px) {
   .dropzone {
     height: 50%;
