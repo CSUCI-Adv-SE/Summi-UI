@@ -1,15 +1,10 @@
 .navbar .navbar-expand-lgnavbar-light {
-    color: rgb(23, 23, 169);
+color: rgb(23, 23, 169);
 }
 .header-logo {
     height: 80px;
     width: 100px;
 }
-
-/* .header li {
-    padding: 0px 16px;
-
-} */
 
 .header-login {
     border: none;
@@ -23,11 +18,6 @@
     width: 40px;
 }
 
-/* .header { */
-    /* border: 3px solid #fff; */
-    /* padding: 20px; */
-/* } */
-
 .float-child {
     width: auto;
     float: left;
@@ -36,5 +26,31 @@
 }  
 
 .custom-navbar {
-    background-color: #0B3668;
+    background-color: rgb(11, 54, 104);
 }
+
+.show ul{
+   background-color: rgb(11, 54, 104,.5) ;
+   display: flex;
+   padding:0px;
+   border-bottom: solid  hsl(0, 0%, 80%,.2);
+  
+   
+}
+.show li{
+    border-bottom: solid  #ccc;
+   box-shadow: 10px 5px 5px rgb(11, 54, 104) ;
+   padding: 0px;
+    
+}
+.show span{
+    color: white;
+    font-size: 16px;
+  
+    font-weight: 200;
+
+}
+    
+
+
+
