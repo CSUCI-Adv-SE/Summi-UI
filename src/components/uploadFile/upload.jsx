@@ -35,18 +35,28 @@ const UpLoad = (props) => {
       .then((response) => {
         if (response.data.status !== 200) {
           NotificationManager.error(
-            "Error message",
             response.data.message,
+            "Error",
             5000
           );
         } else if (response.data.status === 200) {
-          NotificationManager.sucess(
-            "success message",
-            "File is uploaded successfully",
-            5000
-          );
           const summaryFormData = createFormData();
           summaryFormData.append("image_uuid", response.data.image_id);
+
+          NotificationManager.success(
+            "File is uploaded successfully",
+            "Success",
+            5000
+          );
+
+          setTimeout(() => {
+            NotificationManager.info(
+              "We are still recognising the text. Please allow us some time",
+              "Info",
+              5000
+            );
+          }, 8000);
+
           axios
             .post(config.url.API_URL + "/summarise-text/", summaryFormData, {
               "content-type": "multipart/form-data",
@@ -54,16 +64,11 @@ const UpLoad = (props) => {
             .then((summary_response) => {
               if (summary_response.data.status !== 200) {
                 NotificationManager.error(
-                  "Error message",
                   summary_response.data.message,
+                  "Error",
                   5000
                 );
               } else if (summary_response.data.status === 200) {
-                NotificationManager.sucess(
-                  "success message",
-                  "File is uploaded successfully",
-                  5000
-                );
                 let resp = {};
                 resp["image_url"] = response.data.image_url;
                 resp["recognised_text"] = summary_response.data.message;
