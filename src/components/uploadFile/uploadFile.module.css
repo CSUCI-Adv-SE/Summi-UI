@@ -12,11 +12,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  width: 400px;
+  height: 75%;
+  width: 95%;
+  border-radius: 20px;
+  margin: 30px;
   border: 2px dashed #ccc;
   margin-bottom: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   background-color: white;
 }
 
@@ -44,10 +46,10 @@
 
 .list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
+  /* flex-direction: column;
+  align-items: center; */
+  justify-content: right;
+  padding-right: 2%;
 }
 
 .list ul {
@@ -58,11 +60,10 @@
 
 .list li {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   width: 100%;
   padding: 10px;
-
 
   margin-bottom: 5px;
 }
@@ -71,16 +72,17 @@
   margin-right: 10px;
 }
 
-.clearn {
+.clear_all,
+.submit {
   background-color: #336699;
   color: white;
   border: none;
+  margin-left: 20px;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
 }
-
 
 .btn div {
   display: flex;
@@ -88,19 +90,77 @@
 }
 
 .vertical_btn button {
-
-  justify-content: space-between;
-  height: '100vh';
-  display: 'flex';
-  align-items: 'center';
-  background-color: #336699;
+  justify-content: center;
+  /* height: 100vh; */
+  display: flex;
+  /*flex-direction: 'column';*/
+  align-items: center;
   color: white;
+  background: #336699;
   border: none;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
   margin-left: 10px;
-
-
 }
+
+.vertical_btn {
+  justify-content: right;
+  /* height: 100vh; */
+  display: flex;
+  /*flex-direction: 'column';*/
+  align-items: center;
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.files_names_list {
+  display: inline-block;
+  max-width: 17ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+@media (max-width: 768px) {
+  .dropzone {
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+  }
+}
+
+/*
+.clearnall button {
+ 
+  background-color: #cccccc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+*/
+/*
+ height: '100vh';
+  display: 'flex';
+  flex-direction: 'column';
+  align-items:'center';
+  justify-content: 'center';
+  margin-top: 10px;
+  background-color: #336699;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;*/

@@ -1,30 +1,14 @@
-import './App.css';
-import UpLoad from './components/uploadFile/uploadFile';
-import 'react-notifications/lib/notifications.css';
-import Header from './components/generalComponent/header';
-import Sidebar from './components/generalComponent/sidebar';
+import "./App.css";
+import "react-notifications/lib/notifications.css";
+
+import HomePage from "./components/homepageComponent/homepage";
 
 function App() {
   return (
     <div className="App">
-      
-      <Header />
-      <UpLoad />
-      <Sidebar />
-
-
-      
-
-
-
-
-
-
+      <HomePage />
     </div>
-
   );
-
-
 }
 
 export default App;
