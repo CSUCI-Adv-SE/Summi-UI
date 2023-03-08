@@ -62,20 +62,45 @@ const Header = () => {
         {openDropDown && <LoginDropDown />}
       </nav>
 
+
       <div
-        className={showMobileSideMenu ? "show" : "collapse"}
-        style={{ textAlign: "left" }}
+        className={showMobileSideMenu ? "show mobile" : "collapse"}
+        style={{ justifyContent: "center", textAlign: "center" }}
       >
         <ul className="nav-pills flex-column">
-          <li className="nav-item text-black fs-4">
+          <li className="nav-item text-white fs-4">
             <a
-              className="nav-link text-black fs-5"
+              className="nav-link text-white fs-5"
               href="/"
               aria-current="page"
             >
-              <i className="bi bi-house" /> <span className="ms-2">Home</span>
+              <i className="bi bi-house" />
+              <span className="ms-2">Home</span>
             </a>
           </li>
+
+          {/* <li className="nav-item text-white fs-4">
+            <a
+              className="nav-link text-white fs-5"
+              href="/"
+              aria-current="page"
+            >
+              <i className="bi bi-house" />
+              <span className="ms-2">About</span>
+            </a>
+          </li>
+
+          <li className="nav-item text-white fs-4">
+            <a
+              className="nav-link text-white fs-5"
+              href="/"
+              aria-current="page"
+            >
+              <i className="bi bi-house" />
+              <span className="ms-2">Contact</span>
+            </a>
+          </li> */}
+
         </ul>
       </div>
     </div>

@@ -54,8 +54,8 @@
 
 .list ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
+
+  padding: 0px;
 }
 
 .list li {
@@ -69,7 +69,8 @@
 }
 
 .list li span:first-child {
-  margin-right: 10px;
+  margin-right: 0px;
+
 }
 
 .clear_all,
@@ -77,47 +78,11 @@
   background-color: #336699;
   color: white;
   border: none;
-  margin-left: 20px;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn div {
-  display: flex;
-  justify-content: space-between;
-}
-
-.vertical_btn button {
-  justify-content: center;
-  /* height: 100vh; */
-  display: flex;
-  /*flex-direction: 'column';*/
-  align-items: center;
-  color: white;
-  background: #336699;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
   margin-left: 10px;
-}
-
-.vertical_btn {
-  justify-content: right;
-  /* height: 100vh; */
-  display: flex;
-  /*flex-direction: 'column';*/
-  align-items: center;
-  /* color: white; */
-  border: none;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  margin: 10px;
 }
 
 .files_names_list {
