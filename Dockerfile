@@ -15,5 +15,11 @@ RUN npm install --silent
 # add app
 COPY . ./
 
-# start app
-CMD ["npm", "start", "0.0.0.0:3000"]
+# create production files
+RUN npm run build --production
+
+RUN npm install -g serve
+
+CMD serve -s build
+
+EXPOSE 3000
