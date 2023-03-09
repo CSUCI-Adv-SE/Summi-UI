@@ -1,6 +1,6 @@
 const prod = {
   url: {
-    API_URL: "http://3.145.202.227:8000",
+    API_URL: "http://3.15.225.76:8000",
   },
 };
 
