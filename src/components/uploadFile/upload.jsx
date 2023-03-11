@@ -49,7 +49,7 @@ const UpLoad = (props) => {
             5000
           );
 
-          setTimeout(() => {
+          let info_timer = setTimeout(() => {
             NotificationManager.info(
               "We are still recognising the text. Please allow us some time",
               "Info",
@@ -62,6 +62,7 @@ const UpLoad = (props) => {
               "content-type": "multipart/form-data",
             })
             .then((summary_response) => {
+              clearTimeout(info_timer);
               if (summary_response.data.status !== 200) {
                 NotificationManager.error(
                   summary_response.data.message,
