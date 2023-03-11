@@ -16,10 +16,10 @@ RUN npm install --silent
 COPY . ./
 
 # create production files
-RUN npm run build --production
+RUN npm run build
 
-RUN npm install -g serve
+RUN npm install -g serve@10.1.1
 
 CMD serve -s build
 
-EXPOSE 3000
+EXPOSE 5000
