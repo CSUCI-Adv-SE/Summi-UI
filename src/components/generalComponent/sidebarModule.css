@@ -1,0 +1,17 @@
+ul {
+    margin:0 0 0;
+    padding: 0;
+    list-style-type: none;
+   
+     
+}
+
+ul li a:hover {
+    cursor: pointer;
+}
+
+.bg-custom {
+    background-color: #0B3668;
+    opacity: 87%;
+    min-height: 87vh;
+}
