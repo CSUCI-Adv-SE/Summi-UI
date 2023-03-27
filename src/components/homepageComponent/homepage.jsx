@@ -1,6 +1,7 @@
 import Header from "../generalComponent/header";
 import Sidebar from "../generalComponent/sidebar";
 import UploadPageComponent from "../uploadFile/uploadpage";
+import AboutPage from '../aboutpageComponent/aboutpage';
 import { Component } from "react";
 
 class HomePage extends Component {

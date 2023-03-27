@@ -12,6 +12,9 @@ const AboutPage = () => {
     return (
         <div className="aboutpage">
             <h1>About Us</h1>
+            <p>
+                This Web App can read any PDF, JPEG, PNG file and can convert it to Text as an output.
+            </p>
             <p>Our team members:</p>
             <ul>
                 {teamMembers.map((member, index) => (
