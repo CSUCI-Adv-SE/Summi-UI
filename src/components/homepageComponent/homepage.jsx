@@ -1,8 +1,9 @@
 import Header from "../generalComponent/header";
 import Sidebar from "../generalComponent/sidebar";
 import UploadPageComponent from "../uploadFile/uploadpage";
-import AboutPage from '../aboutpageComponent/aboutpage';
 import { Component } from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import AboutPage from "../aboutpageComponent/aboutpage";
 
 class HomePage extends Component {
   state = {};
@@ -10,7 +11,6 @@ class HomePage extends Component {
     return (
       <>
         <Header />
-
         <div
           className="container-fluid"
           style={{ background: "#E4E8FF", height: "100%" }}
@@ -18,7 +18,15 @@ class HomePage extends Component {
           <div className="row" style={{ height: "100%" }}>
             <Sidebar />
 
-            <UploadPageComponent />
+              <BrowserRouter>
+                  <Routes>
+                      <Route path="/about" element={<AboutPage />}>
+                      </Route>
+                      <Route path="/" element={<UploadPageComponent />} />
+                  </Routes>
+              </BrowserRouter>
+
+
           </div>
         </div>
       </>
