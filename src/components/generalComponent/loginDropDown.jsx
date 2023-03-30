@@ -7,6 +7,7 @@ const LoginDropDown = () => {
         <div className='loginDropDown'>
             <ul className='loginDropDownItem'>
             <div className='half-width white-bg'>
+          <br/>
           <h4>Login</h4>
           <br/>
           <form action="">
@@ -18,6 +19,9 @@ const LoginDropDown = () => {
             </div>
             <br/>
             <button type="submit" className='btn btn-primary right-btn'>Log in</button>
+            <br/>
+            <br>"Don't have an account? "</br>
+            <button type="submit" class="btn btn-primary right-btn">Sign up</button>
           </form>
         </div>   
             </ul>
