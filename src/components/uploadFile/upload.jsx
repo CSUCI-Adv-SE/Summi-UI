@@ -10,6 +10,12 @@ import "react-notifications/lib/notifications.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { config } from "../../constants";
 
+function remove_button_classes(elements) {
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.remove("btn", "btn-light", "disabled");
+  }
+}
+
 const UpLoad = (props) => {
   const {
     files,
@@ -26,6 +32,11 @@ const UpLoad = (props) => {
     e.preventDefault();
 
     const formData = createFormData();
+    e.target.firstChild.classList.remove("d-none");
+    let childs = e.target.parentElement.children;
+    for (let i = 0; i < childs.length; i++) {
+      childs[i].classList.add("btn", "btn-light", "disabled");
+    }
 
     formData.append("uploaded_file", files[0]);
     axios
@@ -34,11 +45,9 @@ const UpLoad = (props) => {
       })
       .then((response) => {
         if (response.data.status !== 200) {
-          NotificationManager.error(
-            response.data.message,
-            "Error",
-            5000
-          );
+          e.target.firstChild.classList.add("d-none");
+          remove_button_classes(childs);
+          NotificationManager.error(response.data.message, "Error", 5000);
         } else if (response.data.status === 200) {
           const summaryFormData = createFormData();
           summaryFormData.append("image_uuid", response.data.image_id);
@@ -64,6 +73,8 @@ const UpLoad = (props) => {
             .then((summary_response) => {
               clearTimeout(info_timer);
               if (summary_response.data.status !== 200) {
+                e.target.firstChild.classList.add("d-none");
+                remove_button_classes(childs);
                 NotificationManager.error(
                   summary_response.data.message,
                   "Error",
@@ -78,11 +89,15 @@ const UpLoad = (props) => {
               }
             })
             .catch((error) => {
+              e.target.firstChild.classList.add("d-none");
+              remove_button_classes(childs);
               NotificationManager.error(error.message, "Error", 5000);
             });
         }
       })
       .catch((error) => {
+        e.target.firstChild.classList.add("d-none");
+        remove_button_classes(childs);
         NotificationManager.error(error.message, "Error", 5000);
       });
   };
@@ -149,12 +164,23 @@ const UpLoad = (props) => {
 
                       <div style={{ display: "flex" }}>
                         <button
+                          type="submit"
                           className={style.clear_all}
                           onClick={() => clearAllFiles()}
                         >
                           Clear
                         </button>
-                        <button className={style.submit} onClick={handleSubmit}>
+                        <button
+                          type="submit"
+                          className={style.submit}
+                          onClick={handleSubmit}
+                        >
+                          <span
+                            className="spinner-border spinner-border-sm d-none"
+                            style={{ marginRight: "0.5rem" }}
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
                           Submit
                         </button>
                       </div>
@@ -169,6 +195,7 @@ const UpLoad = (props) => {
             <button
               className="submit btn btn-light disabled"
               disabled
+              type="submit"
               onClick={handleSubmit}
             >
               Submit
