@@ -26,7 +26,7 @@ const LoginDropDown = () => {
               <input type="password" className='form-control' placeholder='Password' />
             </div>
             <br />
-            <button type="submit" className='btn btn-primary right-btn'>Log in</button>
+            <button type="submit" className='submit-button'>Log in</button>
             <br />
             <br />
             <p className='link'>
@@ -57,7 +57,7 @@ const LoginDropDown = () => {
                 <input type="password" className='form-control' placeholder='Password' />
               </div>
               <br />
-              <button type="submit" className='btn btn-primary right-btn'>Sign up</button>
+              <button type="submit" className='submit-button'>Sign up</button>
               <br />
               <br />
             </form>
