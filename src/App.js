@@ -1,5 +1,4 @@
 import "./App.css";
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import "react-notifications/lib/notifications.css";
 
 import HomePage from "./components/homepageComponent/homepage";
