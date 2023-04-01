@@ -19,7 +19,7 @@ const LoginDropDown = () => {
           <h4>Login</h4>
           <br />
           <form action="">
-            <div className='form-group'>
+            <div className='form-group space'>
               <input type="text" className='form-control' placeholder='Email' />
             </div>
             <div className='form-group'>
@@ -30,7 +30,7 @@ const LoginDropDown = () => {
             <br />
             <br />
             <p className='link'>
-              Don't have an account?{' '}
+              Don't have an account?
               <button type="button" className="text-button" onClick={handleSignupClick}>
                 Sign up
               </button>
@@ -47,10 +47,10 @@ const LoginDropDown = () => {
             <h4>Sign up</h4>
             <br />
             <form action="">
-              <div className='form-group'>
+              <div className='form-group space'>
                 <input type="text" className='form-control' placeholder='Name' />
               </div>
-              <div className='form-group'>
+              <div className='form-group space'>
                 <input type="text" className='form-control' placeholder='Email' />
               </div>
               <div className='form-group'>

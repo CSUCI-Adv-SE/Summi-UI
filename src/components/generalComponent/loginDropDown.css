@@ -35,6 +35,9 @@
 }
  .text-button{
      color: blue;
+     border-color: transparent;
+     background-color: transparent;
+     text-decoration: underline;
  }
  .modal-popup {
     position: fixed;
@@ -64,6 +67,9 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
+    border-color: #fff8ff;
+    background-color: transparent;
+    font-weight: 500;
   }
 
   .submit-button {
@@ -78,4 +84,7 @@
   padding-right: 10px;
   font-size: 16px;
   cursor: pointer;
+  }
+  .space {
+    margin-bottom: 4px;
   }
