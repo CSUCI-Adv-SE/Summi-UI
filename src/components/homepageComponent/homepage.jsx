@@ -17,7 +17,6 @@ class HomePage extends Component {
         >
           <div className="row" style={{ height: "100%" }}>
             <Sidebar />
-
               <BrowserRouter>
                   <Routes>
                       <Route path="/about" element={<AboutPage />}>
@@ -25,8 +24,6 @@ class HomePage extends Component {
                       <Route path="/" element={<UploadPageComponent />} />
                   </Routes>
               </BrowserRouter>
-
-
           </div>
         </div>
       </>
