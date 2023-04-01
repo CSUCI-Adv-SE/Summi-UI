@@ -1,4 +1,5 @@
 import React from 'react';
+import ocrFlowImage from './ocr_flow.png';
 
 const AboutPage = () => {
     const teamMembers = [
@@ -22,6 +23,7 @@ const AboutPage = () => {
                     <li key={index}>{member}</li>
                 ))}
             </ul>
+            <img src={ocrFlowImage} alt="Our App Logic Flow" />
         </div>
     );
 };
