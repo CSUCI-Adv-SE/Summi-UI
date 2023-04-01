@@ -40,7 +40,7 @@ const LoginDropDown = () => {
       </ul>
       {showSignup && (
         <div className="modal-popup">
-          <div className="modal-content">
+          <div className="modal-contents">
             <button type="button" className="close-button" onClick={handleCloseSignup}>
               X
             </button>
