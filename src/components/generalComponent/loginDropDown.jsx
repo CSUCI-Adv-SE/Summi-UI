@@ -1,8 +1,17 @@
-import React from 'react'
-import './loginDropDown.css'
-
+import React, { useState } from 'react';
+import './loginDropDown.css';
 
 const LoginDropDown = () => {
+  const [showSignup, setShowSignup] = useState(false);
+
+  const handleSignupClick = () => {
+    setShowSignup(true);
+  };
+
+  const handleCloseSignup = () => {
+    setShowSignup(false);
+  };
+
   return (
     <div className='loginDropDown'>
       <ul className='loginDropDownItem'>
@@ -20,12 +29,43 @@ const LoginDropDown = () => {
             <button type="submit" className='btn btn-primary right-btn'>Log in</button>
             <br />
             <br />
-            <p className='link'>Don't have an account? <a href="text-button">Sign up</a></p>
+            <p className='link'>
+              Don't have an account?{' '}
+              <button type="button" className="text-button" onClick={handleSignupClick}>
+                Sign up
+              </button>
+            </p>
           </form>
         </div>
       </ul>
+      {showSignup && (
+        <div className="modal-popup">
+          <div className="modal-content">
+            <button type="button" className="close-button" onClick={handleCloseSignup}>
+              X
+            </button>
+            <h4>Sign up</h4>
+            <br />
+            <form action="">
+              <div className='form-group'>
+                <input type="text" className='form-control' placeholder='Name' />
+              </div>
+              <div className='form-group'>
+                <input type="text" className='form-control' placeholder='Email' />
+              </div>
+              <div className='form-group'>
+                <input type="password" className='form-control' placeholder='Password' />
+              </div>
+              <br />
+              <button type="submit" className='btn btn-primary right-btn'>Sign up</button>
+              <br />
+              <br />
+            </form>
+          </div>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default LoginDropDown
+export default LoginDropDown;
