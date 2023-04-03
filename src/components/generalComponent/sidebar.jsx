@@ -16,8 +16,12 @@ const Sidebar = () => {
           </a>
         </li>
         <li className="nav-item text-white fs-4">
-          <a className="nav-link text-white fs-5" href="/about" aria-current="page">
-            <i className="fas fa-tag"></i> <span className="ms-2">About Us</span>
+          <a
+            className="nav-link text-white fs-5"
+            href="/about"
+            aria-current="page"
+          >
+            <i className="bi bi-info-circle" /> <span className="ms-2">About Us</span>
           </a>
         </li>
       </ul>

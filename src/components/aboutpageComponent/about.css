@@ -1,19 +1,38 @@
+.about-us {
+  margin: 3% 0%;
+}
+
+.thankyou-note {
+  margin-top: 20px;
+}
 
 .left-aligned-text {
-    text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
-    font-weight: 600;
-    font-size: 1.5em;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  /* font-weight: 600; */
 }
 .team-members-list {
-    text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
-    font-weight: 600;
-    font-size: 1.5em;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  /* font-weight: 600; */
+  /* font-size: 1.5em; */
 }
-.image-50-percent {
-    width: 50%;
+
+@media only screen and (min-width: 768px) {
+  .image-50-percent {
+    /* width: 50%; */
+    /* height: auto; */
+    width: 600px;
     height: auto;
+  }
+}
+
+/*Mobile Query*/
+@media only screen and (max-width: 768px) {
+  .image-50-percent {
+    height: auto;
+    width: 100%;
+  }
 }
