@@ -6,8 +6,20 @@ const LoginDropDown = () => {
     return(
         <div className='loginDropDown'>
             <ul className='loginDropDownItem'>
-                <li>Future</li>
-                <li>Future</li>
+            <div className='half-width white-bg'>
+          <h4>Login</h4>
+          <br/>
+          <form action="">
+            <div className='form-group'>
+              <input type="text" className='form-control' placeholder='Email'/>
+            </div>
+            <div className='form-group'>
+              <input type="password" className='form-control' placeholder='Password'/>
+            </div>
+            <br/>
+            <button type="submit" className='btn btn-primary right-btn'>Log in</button>
+          </form>
+        </div>   
             </ul>
         </div>
     )
