@@ -1,0 +1,19 @@
+
+.left-aligned-text {
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+.team-members-list {
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+.image-50-percent {
+    width: 50%;
+    height: auto;
+}

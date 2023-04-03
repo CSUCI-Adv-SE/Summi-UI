@@ -1,6 +1,6 @@
 import React from 'react';
 import ocrFlowImage from './ocr_flow.png';
-import '../../App.css';
+import './about.css';
 
 const AboutPage = () => {
     const teamMembers = [
