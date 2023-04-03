@@ -1,0 +1,72 @@
+/* Add more whitespace to the about-us section */
+.about-us {
+  margin: 5% 0;
+}
+
+/* Add more margin to the thank-you note */
+.thankyou-note {
+  margin-top: 20px;
+  font-size: 2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  color: #0B3668;
+  text-align: center;
+}
+
+/* Center align the left-aligned text and add more padding */
+.left-aligned-text {
+  text-align: center;
+  padding: 0 10%;
+  font-weight: 400;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-out;
+}
+
+/* Center align the team members list and add more padding */
+.team-members-list {
+  display: inherit;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 0 5%;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+/* Set a smaller max-width for the image and center align it */
+.image-50-percent {
+  max-width: 50%;
+  height: auto;
+  margin: 20px auto;
+  transition: all 0.3s ease-out;
+}
+
+/* Add a hover effect to the left-aligned text and image */
+@media only screen and (min-width: 768px) {
+  .left-aligned-text:hover {
+    transform: translateX(-10px);
+  }
+  
+  .image-50-percent:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* Center align the left-aligned text and add more padding */
+  .left-aligned-text {
+    padding: 0;
+  }
+
+  /* Center align the team members list and add more padding */
+  .team-members-list {
+    padding: 0;
+  }
+
+  /* Set a smaller max-width for the image and center align it */
+  .image-50-percent {
+    max-width: 100%;
+    margin: 20px auto;
+    transition: all 0.3s ease-out;
+  }
+}
