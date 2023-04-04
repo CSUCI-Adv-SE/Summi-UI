@@ -1,50 +1,46 @@
 .navbar .navbar-expand-lgnavbar-light {
-color: rgb(23, 23, 169);
+  color: rgb(23, 23, 169);
 }
 .header-logo {
-    height: 80px;
-    width: 100px;
+  height: 80px;
+  width: 100px;
 }
 
 .header-login {
-    border: none;
-    color: white;
-    padding: 1px;
-    align-content: center;
-    border-radius: 50%;
+  border: none;
+  color: white;
+  padding: 1px;
+  align-content: center;
+  border-radius: 50%;
 }
 .userpic-button {
-    height: 40px;
-    width: 40px;
+  height: 40px;
+  width: 40px;
 }
 
 .float-child {
-    width: auto;
-    float: left;
-    padding: 0px 15px;
-    
-}  
+  width: auto;
+  float: left;
+  padding: 0px 15px;
+}
 
 .custom-navbar {
-    background-color: rgb(11, 54, 104);
+  background-color: rgb(11, 54, 104);
 }
 
-.show ul{
-   background-color: rgb(11, 54, 104,.5) ;
-   display: flex;
-   padding:0px;
-   border-bottom: solid  hsl(0, 0%, 80%,.2);
-  
-   
+.show ul {
+  background-color: rgb(11, 54, 104, 0.5);
+  display: flex;
+  padding: 0px;
+  border-bottom: solid hsl(0, 0%, 80%, 0.2);
 }
-.show li{
-    border-bottom: solid  #ccc;
-   background-color: rgb(11, 54, 104,.5);
-   padding: 0px;
-    
+.show li {
+  border-bottom: solid #ccc;
+  background-color: rgb(11, 54, 104, 0.5);
+  padding: 0px;
 }
 
-    
+
 
 
 
