@@ -58,7 +58,7 @@ const UpLoad = (props) => {
             5000
           );
 
-          let info_timer = setTimeout(() => {
+          let info_timer = setInterval(() => {
             NotificationManager.info(
               "We are still recognising the text. Please allow us some time",
               "Info",
@@ -71,7 +71,7 @@ const UpLoad = (props) => {
               "content-type": "multipart/form-data",
             })
             .then((summary_response) => {
-              clearTimeout(info_timer);
+              clearInterval(info_timer);
               if (summary_response.data.status !== 200) {
                 e.target.firstChild.classList.add("d-none");
                 remove_button_classes(childs);
