@@ -40,7 +40,7 @@ class ConversionResult extends Component {
               </svg>
             </div>
             <div className="col-10 justify-content-center">
-              <h4 className=""> Summarized Text </h4>
+              <h4> Summarized Text </h4>
             </div>
           </div>
           <div className="row">
