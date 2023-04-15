@@ -17,7 +17,7 @@ class ConversionResult extends Component {
     return (
       <>
         <div className="col">
-          <h2 className="text-header"> Recongnized Text </h2>
+          <h2 className="text-header"> Summarized Text </h2>
 
           <div className="col" style={{ display: "flex", margin: "auto" }}>
             <div className="col desktop">
