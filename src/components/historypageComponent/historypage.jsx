@@ -1,38 +1,29 @@
 import React from "react";
 import "./history.css"
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 function History() {
   return (
-    <>
-      <Card>
-        <Card.Img variant="top" src="./A_Little_Princess.jpeg" />
-        <Card.Body>
-          <Card.Text>
-            The little girl who lived in the story was named Lottie and she was interesting to many children. 
-            Some people who lived in the story were not interested in talking to my writer because they thought my writer was slouching, idle, and not interested in learning.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <br />
-      <Card>
-        <Card.Img variant="top" src="./image2.jpg" />
-        <Card.Body>
-          <Card.Text>
-            The woman is better than Picasso at something, so it is likely that she has failed at it more than him.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <br />
-      <Card>
-        <Card.Img variant="top" src="./image3.jpeg" />
-        <Card.Body>
-          <Card.Text>
-            We can't always need to worry about the people we don't matter near, but we always need to worry about the people we do matter near
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </>
+    <div className="margin-history col">
+      <Row xs={1} md={2} className="g-4">
+        {Array.from({ length: 4 }).map((_, idx) => (
+          <Col>
+            <Card>
+              <Card.Img variant="top" src="./image2.jpg" />
+              <Card.Body>
+                <Card.Title>The woman is better than Picasso at something, so it is likely that she has failed at it more than him.</Card.Title>
+                <Card.Text>
+                  The little girl who lived in the story was named Lottie and she was interesting to many children.
+                  Some people who lived in the story were not interested in talking to my writer because they thought my writer was slouching, idle, and not interested in learning.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 }
 
