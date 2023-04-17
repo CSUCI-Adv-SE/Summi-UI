@@ -29,8 +29,11 @@ const LoginDropDown = () => {
       NotificationManager.error(error.message, "Error", 5000);
     });
     console.log(myResponse.data)
-    if(myResponse.data['login']==true){
+    if(myResponse.data['status']==200){
       window.location.reload()
+      setUser(myResponse.data['message'])
+    } else {
+      NotificationManager.error(myResponse.data['message'], "Error", myResponse.data['status']);
     }
   };
 
@@ -48,6 +51,8 @@ const LoginDropDown = () => {
     if(myResponse.data['status'] == 200) {
       handleCloseSignup()
       setUser(user)
+    } else {
+      NotificationManager.error(myResponse.data['message'], "Error", myResponse.data['status']);
     }
   };
 
@@ -71,6 +76,7 @@ const LoginDropDown = () => {
 
   return (
     <div className='loginDropDown'>
+      <h5>{user}</h5>
       <ul className='loginDropDownItem'>
         <div className='half-width white-bg'>
           <h4>Login</h4>
