@@ -45,8 +45,9 @@ const LoginDropDown = () => {
       NotificationManager.error(error.message, "Error", 5000);
     });
     console.log(myResponse.data)
-    if(myResponse.data['register'] == true) {
+    if(myResponse.data['status'] == 200) {
       handleCloseSignup()
+      setUser(user)
     }
   };
 
