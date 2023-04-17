@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './loginDropDown.css';
+import axios from 'axios';
+import { config } from '../../constants';
+import {
+  NotificationManager,
+} from "react-notifications";
 
 const LoginDropDown = () => {
   const [showSignup, setShowSignup] = useState(false);
+  const [user, setUser] = useState(null);
 
   const handleSignupClick = () => {
     setShowSignup(true);
@@ -12,6 +18,54 @@ const LoginDropDown = () => {
     setShowSignup(false);
   };
 
+  const signInSubmit = async(e) => {
+    Event.preventDefault()
+    let email = document.getElementById('logInEmail').value
+    let password = document.getElementById('logInPassword').value
+    const formData = { 'email': email, 'password': password }
+    let myResponse = await axios.post(config.url.API_URL + '/login/', formData, {
+      "content-type": "multipart/form-data",
+    }).catch((error) => {
+      NotificationManager.error(error.message, "Error", 5000);
+    });
+    console.log(myResponse.data)
+    if(myResponse.data['login']==true){
+      window.location.reload()
+    }
+  };
+
+  const signUpSubmit = async (e) => {
+    Event.preventDefault()
+    let username = document.getElementById('registerName').value
+    let email = document.getElementById('registerEmail').value
+    let password = document.getElementById('registerPassword').value
+    const formData = { 'username': username, 'email': email, 'password': password }
+    let myResponse = await axios.post(config.url.API_URL + '/register/', formData, {
+      "content-type": "multipart/form-data",
+    }).catch((error) => {
+      NotificationManager.error(error.message, "Error", 5000);
+    });
+    console.log(myResponse.data)
+  };
+
+  const currentUser = async(e) => {
+    let myResponse = await axios.get(config.url.API_URL + '/currentUser/')
+    let user = myResponse.data && myResponse.data[0] && myResponse.data[0].fields
+    setUser(user)
+    console.log(user)
+  };
+
+  const signOutSubmit = async(e) => {
+    let myResponse = await axios.get(config.url.API_URL + '/logout/')
+    if(myResponse.data['logout'] == true) {
+      window.location.reload()
+    }
+  };
+
+  useEffect(() => {
+    currentUser()
+  }, [])
+
   return (
     <div className='loginDropDown'>
       <ul className='loginDropDownItem'>
@@ -20,13 +74,13 @@ const LoginDropDown = () => {
           <br />
           <form action="">
             <div className='form-group space'>
-              <input type="text" className='form-control' placeholder='Email' />
+              <input id='logInEmail' type="text" className='form-control' placeholder='Email' />
             </div>
             <div className='form-group'>
-              <input type="password" className='form-control' placeholder='Password' />
+              <input id='logInPassword' type="password" className='form-control' placeholder='Password' />
             </div>
             <br />
-            <button type="submit" className='submit-button'>Log in</button>
+            <button type="button" className='submit-button' onClick={signInSubmit}>Log in</button>
             <br />
             <br />
             <p className='link'>
@@ -48,16 +102,16 @@ const LoginDropDown = () => {
             <br />
             <form action="">
               <div className='form-group space'>
-                <input type="text" className='form-control' placeholder='Name' />
+                <input id='registerName' type="text" className='form-control' placeholder='Name' />
               </div>
               <div className='form-group space'>
-                <input type="text" className='form-control' placeholder='Email' />
+                <input id='registerEmail' type="text" className='form-control' placeholder='Email' />
               </div>
               <div className='form-group'>
-                <input type="password" className='form-control' placeholder='Password' />
+                <input id='registerPassword' type="password" className='form-control' placeholder='Password' />
               </div>
               <br />
-              <button type="submit" className='submit-button'>Sign up</button>
+              <button type="button" className='submit-button' onClick={signUpSubmit}>Sign up</button>
               <br />
               <br />
             </form>
