@@ -18,7 +18,7 @@ const Sidebar = () => {
         <li className="nav-item text-white fs-4">
           <a
             className="nav-link text-white fs-5"
-            href="/historypage"
+            href="/history"
             aria-current="page"
           >
             <i className="bi bi-archive" /> <span className="ms-2">History</span>

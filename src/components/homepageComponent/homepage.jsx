@@ -19,7 +19,7 @@ class HomePage extends Component {
               <Routes>
                 <Route path="/about" element={<AboutPage />}></Route>
                 <Route path="/" element={<UploadPageComponent />} />
-                <Route path="/historypage" element={<History />}></Route>
+                <Route path="/history" element={<History />}></Route>
               </Routes>
             </BrowserRouter>
           </div>
