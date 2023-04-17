@@ -78,7 +78,16 @@ const Header = () => {
               <span className="ms-2">Home</span>
             </a>
           </li>
-
+          <li className="nav-item text-white fs-4">
+            <a
+              className="nav-link text-white fs-5"
+              href="/historypage"
+              aria-current="page"
+            >
+              <i className="bi bi-archive" />
+              <span className="ms-2">History</span>
+            </a>
+          </li>
           <li className="nav-item text-white fs-4">
             <a
               className="nav-link text-white fs-5"
@@ -89,18 +98,6 @@ const Header = () => {
               <span className="ms-2">About Us</span>
             </a>
           </li>
-
-          {/* <li className="nav-item text-white fs-4">
-            <a
-              className="nav-link text-white fs-5"
-              href="/"
-              aria-current="page"
-            >
-              <i className="bi bi-house" />
-              <span className="ms-2">Contact</span>
-            </a>
-          </li> */}
-
         </ul>
       </div>
     </div>
