@@ -14,6 +14,8 @@ class ConversionResult extends Component {
       text: props.recognisedText,
       image_url: props.imageURL,
     };
+    this.is_local_image = !props.imageURL.startsWith("https://");
+    this.preview_image_url = this.is_local_image? config.url.API_URL + this.state.image_url: this.state.image_url
   }
 
   render() {
@@ -45,7 +47,11 @@ class ConversionResult extends Component {
           </div>
           <div className="row">
             <div className="col desktop">
-              <img alt="Preview" src={config.url.API_URL + this.state.image_url} height="400"></img>
+              <img
+                alt="Preview"
+                src={this.preview_image_url}
+                height="400"
+              ></img>
             </div>
 
             <div className="col form-floating">
