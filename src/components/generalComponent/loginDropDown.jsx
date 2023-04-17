@@ -12,6 +12,7 @@ const LoginDropDown = () => {
 
   const handleSignupClick = () => {
     setShowSignup(true);
+    
   };
 
   const handleCloseSignup = () => {
@@ -19,7 +20,6 @@ const LoginDropDown = () => {
   };
 
   const signInSubmit = async(e) => {
-    Event.preventDefault()
     let email = document.getElementById('logInEmail').value
     let password = document.getElementById('logInPassword').value
     const formData = { 'email': email, 'password': password }
@@ -35,7 +35,6 @@ const LoginDropDown = () => {
   };
 
   const signUpSubmit = async (e) => {
-    Event.preventDefault()
     let username = document.getElementById('registerName').value
     let email = document.getElementById('registerEmail').value
     let password = document.getElementById('registerPassword').value
@@ -46,6 +45,9 @@ const LoginDropDown = () => {
       NotificationManager.error(error.message, "Error", 5000);
     });
     console.log(myResponse.data)
+    if(myResponse.data['register'] == true) {
+      handleCloseSignup()
+    }
   };
 
   const currentUser = async(e) => {
