@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import useFileUpload from "react-use-file-upload";
 import style from "./uploadFile.module.css";
@@ -28,8 +28,15 @@ const UpLoad = (props) => {
 
   const inputRef = useRef();
 
+  const [urlInput, setUrlInput] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!urlInput && files.length === 0) {
+      NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
+      return;
+    }
 
     const formData = createFormData();
     e.target.firstChild.classList.remove("d-none");
@@ -38,7 +45,11 @@ const UpLoad = (props) => {
       childs[i].classList.add("btn", "btn-light", "disabled");
     }
 
-    formData.append("uploaded_file", files[0]);
+    if (urlInput) {
+      formData.append("uploaded_file_url", urlInput);
+    } else {
+      formData.append("uploaded_file", files[0]);
+    }
     axios
       .post(config.url.API_URL + "/upload-file/", formData, {
         "content-type": "multipart/form-data",
@@ -58,7 +69,7 @@ const UpLoad = (props) => {
             5000
           );
 
-          let info_timer = setTimeout(() => {
+          let info_timer = setInterval(() => {
             NotificationManager.info(
               "We are still recognising the text. Please allow us some time",
               "Info",
@@ -71,7 +82,7 @@ const UpLoad = (props) => {
               "content-type": "multipart/form-data",
             })
             .then((summary_response) => {
-              clearTimeout(info_timer);
+              clearInterval(info_timer);
               if (summary_response.data.status !== 200) {
                 e.target.firstChild.classList.add("d-none");
                 remove_button_classes(childs);
@@ -148,6 +159,13 @@ const UpLoad = (props) => {
               setFiles(e);
               inputRef.current.value = null;
             }}
+          />
+          <input
+              type="text"
+              placeholder="Or enter a URL to upload"
+              value={urlInput}
+              onChange={(e) => setUrlInput(e.target.value)}
+              style={{ marginTop: "1rem" }}
           />
         </div>
 
