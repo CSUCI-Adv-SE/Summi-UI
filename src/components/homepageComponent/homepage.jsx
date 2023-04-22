@@ -4,7 +4,7 @@ import UploadPageComponent from "../uploadFile/uploadpage";
 import { Component } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutPage from "../aboutpageComponent/aboutpage";
-import History from "../historypageComponent/historypage.jsx"
+import History from "../historypageComponent/historypage.jsx";
 
 class HomePage extends Component {
   state = {};
@@ -19,7 +19,8 @@ class HomePage extends Component {
               <Routes>
                 <Route path="/about" element={<AboutPage />}></Route>
                 <Route path="/" element={<UploadPageComponent />} />
-                <Route path="/history" element={<History />}></Route>
+                <Route path="/history" element={ <History /> } />
+                <Route path="*" element={<p>There's nothing here: 404!</p>} />
               </Routes>
             </BrowserRouter>
           </div>

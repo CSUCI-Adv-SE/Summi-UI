@@ -1,51 +1,88 @@
-import React from "react";
-import "./history.css"
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import image1 from "./image1.jpeg";
-import image2 from "./image2.jpg";
-import image3 from "./image3.jpg";
+import React, { Component } from "react";
+import "./history.css";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import axios from "axios";
+import get_request_headers from "../utils/requestHeaders";
+import { config } from "../../constants";
+import { NotificationManager } from "react-notifications";
+import Button from "react-bootstrap/Button";
 
-function History() {
-  return (
-    <div className="margin-history col">
-      <Row xs={1} md={2} className="g-4">
-        <Col>
-          <Card>
-            <img src={image2} alt="image2" className="image-50-percent" />
-            <Card.Body>
-              <Card.Text>
-              The woman is better than Picasso at something, so it is likely that she has failed at it more than him.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <img src={image3} alt="image3" className="image-50-percent" />
-            <Card.Body>
-              <Card.Text>
-                We can't always need to worry about the people we don't matter near, but we always need to worry about the people we do matter near.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <img src={image1} alt="image1" className="image-50-percent" />
-            <Card.Body>
-              <Card.Text>
-                The little girl who lived in the story was named Lottie and she was interesting to many children.
-                Some people who lived in the story were not interested in talking to my writer because they thought my writer was slouching, idle, and not interested in learning.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        
-      </Row>
-    </div>
-  );
+class History extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { flag: false, user_history: [] };
+  }
+
+  componentDidMount() {
+    axios
+      .post(config.url.API_URL + "/history/", {}, get_request_headers())
+      .then((resp) => {
+        if (resp.data["status"] !== 200) {
+          NotificationManager.error(resp.data.message, "Error", 5000);
+          return;
+        } else {
+          this.setState({
+            flag: true,
+            user_history: resp.data.history,
+          });
+        }
+      })
+      .catch((error) => {
+        NotificationManager.error(error.message, "Error", 5000);
+        return;
+      });
+  }
+
+  render() {
+    return (
+      <>
+        {this.state.flag ? (
+          !this.state.user_history.length ? (
+            <div className="margin-history col">
+              <Card className="text-center">
+                <Card.Header>History</Card.Header>
+                <Card.Body>
+                  <Card.Title>No History Found!</Card.Title>
+                  <Card.Text>
+                    We haven't found your history. <br /> Please use the below
+                    link to get started!
+                  </Card.Text>
+                  <Button variant="primary" href="/">
+                    Go Home
+                  </Button>
+                </Card.Body>
+              </Card>
+            </div>
+          ) : (
+            <div className="margin-history col">
+              <Row xs={1} md={2} className="g-4">
+                {this.state.user_history.map((history_card, index) => (
+                  <Col key={index}>
+                    <Card>
+                      <img
+                        src={history_card.image_path}
+                        alt="user_image"
+                        className="image-50-percent"
+                      />
+                      <Card.Body>
+                        <Card.Text>{history_card.image_summary}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          )
+        ) : (
+          <div className="col">
+            <h4> getting data </h4>
+          </div>
+        )}
+      </>
+    );
+  }
 }
 
 export default History;
