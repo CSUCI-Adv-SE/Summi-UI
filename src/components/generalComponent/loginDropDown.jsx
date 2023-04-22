@@ -4,19 +4,15 @@ import axios from "axios";
 import { config } from "../../constants";
 import { NotificationManager } from "react-notifications";
 import Cookies from "js-cookie";
-import { is_email_valid } from "../utils";
-import is_strong_password from "../utils/passwordValidation";
+import { is_email_valid, is_strong_password } from "../utils";
 import MyAccount from "../myAccountComponent/myAccount";
 
 const LoginDropDown = () => {
   const [showSignup, setShowSignup] = useState(false);
-  let isUserLoggedIn = false;
 
   let summi_token = Cookies.get("summi_token");
 
-  if (summi_token !== undefined) {
-    isUserLoggedIn = true;
-  }
+  let isUserLoggedIn = summi_token !== undefined;
 
   const handleSignupClick = () => {
     setShowSignup(!showSignup);
@@ -25,6 +21,21 @@ const LoginDropDown = () => {
   const signInSubmit = async (e) => {
     let email = document.getElementById("logInEmail").value.trim();
     let password = document.getElementById("logInPassword").value;
+
+    if (!is_email_valid()) {
+      NotificationManager.error(
+        "Please enter email in valid format.",
+        "Error",
+        5000
+      );
+      return;
+    }
+
+    if (!password.length) {
+      NotificationManager.error("Password cannot be empty", "Error", 5000);
+      return;
+    }
+
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
@@ -101,7 +112,7 @@ const LoginDropDown = () => {
         NotificationManager.error(error.message, "Error", 5000);
         return;
       });
-    console.log(myResponse.data);
+
     if (myResponse.data["status"] === 200) {
       error_element.className = "success-message";
       error_element.textContent =
@@ -111,14 +122,11 @@ const LoginDropDown = () => {
     }
   };
 
-  // const signOutSubmit = async (e) => {
-  //   Cookies.remove("summi_token");
-  //   window.location.reload();
-  // };
-
   return (
     <>
-      {isUserLoggedIn ? <MyAccount /> : (
+      {isUserLoggedIn ? (
+        <MyAccount />
+      ) : (
         <>
           <div className="loginDropDown">
             <ul className="loginDropDownItem">

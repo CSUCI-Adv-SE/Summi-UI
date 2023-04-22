@@ -20,7 +20,6 @@ class HomePage extends Component {
                 <Route path="/about" element={<AboutPage />}></Route>
                 <Route path="/" element={<UploadPageComponent />} />
                 <Route path="/history" element={ <History /> } />
-                <Route path="*" element={<p>There's nothing here: 404!</p>} />
               </Routes>
             </BrowserRouter>
           </div>
