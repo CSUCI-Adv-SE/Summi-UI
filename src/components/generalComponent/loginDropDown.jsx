@@ -22,7 +22,7 @@ const LoginDropDown = () => {
     let email = document.getElementById("logInEmail").value.trim();
     let password = document.getElementById("logInPassword").value;
 
-    if (!is_email_valid()) {
+    if (!is_email_valid(email)) {
       NotificationManager.error(
         "Please enter email in valid format.",
         "Error",

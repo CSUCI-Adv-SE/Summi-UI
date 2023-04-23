@@ -57,14 +57,18 @@ class History extends Component {
             </div>
           ) : (
             <div className="margin-history col">
-              <Row xs={1} md={2} className="g-4">
+              <Row xs={1} md={4} className="g-4">
                 {this.state.user_history.map((history_card, index) => (
                   <Col key={index}>
                     <Card>
                       <img
-                        src={history_card.image_path}
+                        src={
+                          history_card.image_path.startsWith("https://")
+                            ? history_card.image_path
+                            : config.url.API_URL + history_card.image_path
+                        }
                         alt="user_image"
-                        className="image-50-percent"
+                        className="result-page-image"
                       />
                       <Card.Body>
                         <Card.Text>{history_card.image_summary}</Card.Text>
