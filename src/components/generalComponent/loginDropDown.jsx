@@ -22,7 +22,7 @@ const LoginDropDown = () => {
     let email = document.getElementById("logInEmail").value.trim();
     let password = document.getElementById("logInPassword").value;
 
-    if (!is_email_valid(email)) {
+    if (email.length === 0 || !is_email_valid(email)) {
       NotificationManager.error(
         "Please enter email in valid format.",
         "Error",
@@ -57,6 +57,7 @@ const LoginDropDown = () => {
       });
     if (myResponse.data["status"] === 200) {
       Cookies.set("summi_token", myResponse.data["token"]);
+      Cookies.set("loggined_user", myResponse.data["username"]);
       NotificationManager.success(myResponse.data["message"], "Success", 5000);
       setTimeout(window.location.reload(), 5000);
     } else {
@@ -116,7 +117,7 @@ const LoginDropDown = () => {
     if (myResponse.data["status"] === 200) {
       error_element.className = "success-message";
       error_element.textContent =
-        "Signup success! Please use Login to use your account";
+        "Signup success! Please Login to use your account";
     } else {
       NotificationManager.error(myResponse.data["message"], "Error", 5000);
     }
