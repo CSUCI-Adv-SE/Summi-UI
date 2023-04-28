@@ -9,6 +9,7 @@ import {
 import "react-notifications/lib/notifications.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { config } from "../../constants";
+import get_request_headers from "../utils/requestHeaders";
 
 function remove_button_classes(elements) {
   for (let i = 0; i < elements.length; i++) {
@@ -51,9 +52,7 @@ const UpLoad = (props) => {
       formData.append("uploaded_file", files[0]);
     }
     axios
-      .post(config.url.API_URL + "/upload-file/", formData, {
-        "content-type": "multipart/form-data",
-      })
+      .post(config.url.API_URL + "/upload-file/", formData, get_request_headers())
       .then((response) => {
         if (response.data.status !== 200) {
           e.target.firstChild.classList.add("d-none");
@@ -78,9 +77,7 @@ const UpLoad = (props) => {
           }, 8000);
 
           axios
-            .post(config.url.API_URL + "/summarise-text/", summaryFormData, {
-              "content-type": "multipart/form-data",
-            })
+            .post(config.url.API_URL + "/summarise-text/", summaryFormData, get_request_headers())
             .then((summary_response) => {
               clearInterval(info_timer);
               if (summary_response.data.status !== 200) {
@@ -214,6 +211,7 @@ const UpLoad = (props) => {
               className="submit btn btn-light disabled"
               disabled
               type="submit"
+              style={{ opacity: "unset", }}
               onClick={handleSubmit}
             >
               Submit
