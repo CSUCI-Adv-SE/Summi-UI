@@ -14,7 +14,9 @@ class MyAccount extends Component {
     return (
       <div className="loginDropDown">
         <p> Hi {Cookies.get("loggined_user")} </p>
-        <button className="btn btn-link" type="button" onClick={logout}> signout </button>
+        <p> Welcome to your account</p>
+        <i class="bi bi-box-arrow-up-right"></i>
+        <button className="submit-button" type="button" onClick={logout}> Signout </button>
       </div>
     );
   }
