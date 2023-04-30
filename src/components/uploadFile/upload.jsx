@@ -30,26 +30,46 @@ const UpLoad = (props) => {
 
   const [urlInput, setUrlInput] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!urlInput && files.length === 0) {
-      NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
-      return;
-    }
+  if (!urlInput && files.length === 0) {
+    NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
+    return;
+  }
 
-    const formData = createFormData();
-    e.target.firstChild.classList.remove("d-none");
-    let childs = e.target.parentElement.children;
-    for (let i = 0; i < childs.length; i++) {
-      childs[i].classList.add("btn", "btn-light", "disabled");
-    }
+  const formData = createFormData();
+  e.target.firstChild.classList.remove("d-none");
+  let childs = e.target.parentElement.children;
+  for (let i = 0; i < childs.length; i++) {
+    childs[i].classList.add("btn", "btn-light", "disabled");
+  }
 
-    if (urlInput) {
-      formData.append("uploaded_file_url", urlInput);
-    } else {
-      formData.append("uploaded_file", files[0]);
-    }
+  if (urlInput) {
+    formData.append("image_url", urlInput);
+
+    axios
+      .post(config.url.API_URL + "/process-image-url/", formData)
+      .then((response) => {
+        e.target.firstChild.classList.add("d-none");
+        remove_button_classes(childs);
+        setUrlInput("");
+
+        if (response.data.status === 200) {
+          NotificationManager.success("URL processed successfully", "Success", 5000);
+        } else {
+          NotificationManager.error(response.data.message, "Error", 5000);
+        }
+      })
+      .catch((error) => {
+        e.target.firstChild.classList.add("d-none");
+        remove_button_classes(childs);
+        NotificationManager.error(error.message, "Error", 5000);
+      });
+
+  } else {
+    formData.append("uploaded_file", files[0]);
+
     axios
       .post(config.url.API_URL + "/upload-file/", formData, {
         "content-type": "multipart/form-data",
@@ -111,7 +131,9 @@ const UpLoad = (props) => {
         remove_button_classes(childs);
         NotificationManager.error(error.message, "Error", 5000);
       });
-  };
+  }
+};
+
 
   return (
     <>
