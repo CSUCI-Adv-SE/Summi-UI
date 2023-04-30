@@ -159,22 +159,13 @@ const UpLoad = (props) => {
           />
         
           <input
+            className={style.url}
             type="text"
             placeholder="Or enter a URL to upload"
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
-            style={{
-              padding: "1rem",
-              borderRadius: "0.5rem",
-              border: "none",
-              boxShadow: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)",
-              width: "100%",
-              maxWidth: "20rem",
-              fontSize: "1rem",
-              marginTop: "1rem",
-              
-            }}
-            />
+            
+          />
         </div>
 
         <div className={style.list}>
