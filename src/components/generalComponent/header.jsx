@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./headerModule.css";
 import LoginDropDown from "./loginDropDown";
+import Cookies from "js-cookie";
 
 const Header = () => {
   const [openDropDown, setOpenDropDown] = useState(false);
   const [showMobileSideMenu, setshowMobileSideMenu] = useState(false);
+
+  let summi_token = Cookies.get("summi_token");
+  let is_user_logged_in = summi_token !== undefined;
 
   const userpicButton = (event) => {
     setOpenDropDown((prev) => !prev);
@@ -62,7 +66,6 @@ const Header = () => {
         {openDropDown && <LoginDropDown />}
       </nav>
 
-
       <div
         className={showMobileSideMenu ? "show mobile" : "collapse"}
         style={{ justifyContent: "center", textAlign: "center" }}
@@ -78,16 +81,18 @@ const Header = () => {
               <span className="ms-2">Home</span>
             </a>
           </li>
-          <li className="nav-item text-white fs-4">
-            <a
-              className="nav-link text-white fs-5"
-              href="/history"
-              aria-current="page"
-            >
-              <i className="bi bi-archive" />
-              <span className="ms-2">History</span>
-            </a>
-          </li>
+          {is_user_logged_in && (
+            <li className="nav-item text-white fs-4">
+              <a
+                className="nav-link text-white fs-5"
+                href="/history"
+                aria-current="page"
+              >
+                <i className="bi bi-archive" />
+                <span className="ms-2">History</span>
+              </a>
+            </li>
+          )}
           <li className="nav-item text-white fs-4">
             <a
               className="nav-link text-white fs-5"
