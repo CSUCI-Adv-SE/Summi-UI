@@ -94,7 +94,7 @@ const LoginDropDown = () => {
     }
 
     if (!is_strong_password(password)) {
-      error_element.textContent = "Please use strong password!";
+      error_element.textContent = "Please use strong password!\n(1. 8 or more characters; 2. Alphanumeric; 3. Special characters)";
       return;
     }
 
@@ -115,9 +115,10 @@ const LoginDropDown = () => {
       });
 
     if (myResponse.data["status"] === 200) {
-      error_element.className = "success-message";
-      error_element.textContent =
-        "Signup success! Please Login to use your account";
+      Cookies.set("summi_token", myResponse.data["token"]);
+      Cookies.set("loggined_user", myResponse.data["username"]);
+      NotificationManager.success(myResponse.data["message"], "Success", 5000);
+      setTimeout(window.location.reload(), 5000);
     } else {
       NotificationManager.error(myResponse.data["message"], "Error", 5000);
     }
