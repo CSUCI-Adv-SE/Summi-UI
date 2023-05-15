@@ -29,7 +29,7 @@ const UpLoad = (props) => {
 
   const inputRef = useRef();
 
-  const [urlInput, setUrlInput] = useState("");
+  const [urlInput] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
