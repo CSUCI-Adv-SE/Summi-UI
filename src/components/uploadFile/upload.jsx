@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import useFileUpload from "react-use-file-upload";
 import style from "./uploadFile.module.css";
@@ -29,15 +29,20 @@ const UpLoad = (props) => {
 
   const inputRef = useRef();
 
-  const [urlInput, setUrlInput] = useState("");
+  /*const [urlInput, setUrlInput] = useState(""); */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!urlInput && files.length === 0) {
-      NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
+    if (files.length === 0) { 
+      NotificationManager.error("Please provide a file to upload", "Error", 5000);
       return;
     }
+
+    /*if (!urlInput && files.length === 0) {
+      NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
+      return;
+    } */
 
     const formData = createFormData();
     e.target.firstChild.classList.remove("d-none");
@@ -46,11 +51,14 @@ const UpLoad = (props) => {
       childs[i].classList.add("btn", "btn-light", "disabled");
     }
 
-    if (urlInput) {
+    /*if (urlInput) {
       formData.append("uploaded_file_url", urlInput);
     } else {
       formData.append("uploaded_file", files[0]);
-    }
+    } */
+
+    formData.append("uploaded_file", files[0]);
+    
     axios
       .post(config.url.API_URL + "/upload-file/", formData, get_request_headers())
       .then((response) => {
@@ -158,14 +166,14 @@ const UpLoad = (props) => {
             }}
           />
         
-          <input
+          {/*<input
             className={style.url}
             type="text"
             placeholder="Or enter a URL to upload"
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             
-          />
+          />*/}
         </div>
 
         <div className={style.list}>
