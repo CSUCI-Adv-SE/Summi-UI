@@ -34,6 +34,10 @@ const UpLoad = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (files.length === 0) { 
+      NotificationManager.error("Please provide a file to upload", "Error", 5000);
+    }
+
     /*if (!urlInput && files.length === 0) {
       NotificationManager.error("Please provide a file or URL to upload", "Error", 5000);
       return;
