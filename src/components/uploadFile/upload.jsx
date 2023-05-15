@@ -158,14 +158,14 @@ const UpLoad = (props) => {
             }}
           />
         
-          <input
+          {/*<input
             className={style.url}
             type="text"
             placeholder="Or enter a URL to upload"
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             
-          />
+          />*/}
         </div>
 
         <div className={style.list}>
