@@ -36,6 +36,7 @@ const UpLoad = (props) => {
 
     if (files.length === 0) { 
       NotificationManager.error("Please provide a file to upload", "Error", 5000);
+      return;
     }
 
     /*if (!urlInput && files.length === 0) {
